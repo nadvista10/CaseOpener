@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 4f82b0486679fcd46bef9948f5393449
   m_SerializeEntries:
   - m_GUID: 6dd918289658ef5429b11dcd9183cc67
-    m_Address: Assets/Game/GameData/Cases/CasesVisualDataRegistry.asset
+    m_Address: CasesVisualDataRegistry
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
