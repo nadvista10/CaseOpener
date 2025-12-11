@@ -1,4 +1,4 @@
-using Game.Case;
+using Game.Data.Case;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -9,9 +9,11 @@ public class CaseDataLoader : MonoBehaviour
     async void Start()
     {
         await Addressables.InitializeAsync().Task;
-        var caseSO = await Addressables.LoadAssetAsync<CaseDataSo>(key).Task;
-
-        Debug.Log(caseSO.DataJson);
-        Debug.Log(caseSO.Icon.name);
+        var caseRegistrySo = await Addressables.LoadAssetAsync<CasesVisualDataRegistry>(key).Task;
+        foreach (var caseSo in caseRegistrySo.Datas)
+        {
+            Debug.Log(caseSo.Name);
+            Debug.Log(caseSo.Icon.name);
+        }
     }
 }

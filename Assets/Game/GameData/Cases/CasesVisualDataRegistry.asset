@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e16f8d223d3e874e8ba12a308cbf2b4, type: 3}
-  m_Name: RevolutionCaseData
+  m_Script: {fileID: 11500000, guid: 3f23cea64f116644cb9f5cfc4dd94ea3, type: 3}
+  m_Name: CasesVisualDataRegistry
   m_EditorClassIdentifier: 
-  DataJson: {fileID: 4900000, guid: 10208ecbb219d5b43a52ca7dbec7747b, type: 3}
-  Icon: {fileID: 1076546668942742161, guid: 2db0dac30c46a33459be8c31c44662f7, type: 3}
+  <Datas>k__BackingField:
+  - {fileID: 11400000, guid: 375e0a3bd5c95434bbf00a53583c6e33, type: 2}
