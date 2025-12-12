@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f23cea64f116644cb9f5cfc4dd94ea3, type: 3}
-  m_Name: CasesVisualDataRegistry
+  m_Script: {fileID: 11500000, guid: a2579252bc0411b4da870db537de4ec4, type: 3}
+  m_Name: Cases_VD_Local
   m_EditorClassIdentifier: 
-  <Datas>k__BackingField:
-  - {fileID: 11400000, guid: 375e0a3bd5c95434bbf00a53583c6e33, type: 2}
+  <Datas>k__BackingField: []

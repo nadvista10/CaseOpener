@@ -1,4 +1,4 @@
-using Game.Data.Case;
+using Game.Data.Case.Visual;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +13,7 @@ namespace Game.UI.CasesExplorer
         [SerializeField]
         private Image previewImage;
 
-        public void Setup(CaseVisualData data) 
+        public void Setup(CaseVD data) 
         { 
             nameLabel.text = data.Name.text;
             previewImage.sprite = data.Icon;

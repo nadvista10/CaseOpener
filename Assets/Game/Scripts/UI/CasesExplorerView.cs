@@ -1,10 +1,10 @@
-using Game.Data.Case;
-using NUnit.Framework;
+using Cysharp.Threading.Tasks;
+using Game.Data.Case.Providers;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Game.UI.CasesExplorer
 {
@@ -17,49 +17,44 @@ namespace Game.UI.CasesExplorer
         private CaseCardView previewCard;
 
         private List<CaseCardView> _allObjects = new();
-        private List<CaseCardView> _workingObjects = new();
 
-        private CasesVisualDataRegistry _registry;
+        private ICasesVDProvider _provider;
 
-        const string REGISTRY_KEY = "CasesVisualDataRegistry";
-
-        private async void Start()
+        [Inject(Id = "combined")]
+        private void Construct(ICasesVDProvider provider)
         {
-            await Addressables.InitializeAsync().Task;
+            _provider = provider;
+        }
 
-            _registry = await Addressables.LoadAssetAsync<CasesVisualDataRegistry>(REGISTRY_KEY).Task;
-
+        private async UniTask Start()
+        {
             CollectChildrenViews();
-            GenerateCards();
+            await GenerateCards();
         }
 
         private void CollectChildrenViews()
         {
             _allObjects.AddRange(contentRoot.GetComponentsInChildren<CaseCardView>());
         }
-        private void GenerateCards()
+        private async UniTask GenerateCards()
         {
-            if(_registry == null)
-            {
-                Debug.LogWarning("Registry is null");
-                return;
-            }
+            var datas = (await _provider.GetDatasAsync()).ToArray();
 
-            for (int i = _allObjects.Count; i < _registry.Datas.Count; i++)
+            for (int i = _allObjects.Count; i < datas.Length; i++)
             {
                 var card = Instantiate(previewCard, contentRoot);
                 _allObjects.Add(card);
             }
 
-            for(int i = 0; i < _registry.Datas.Count; i++)
+            for(int i = 0; i < datas.Length; i++)
             {
                 var caseView = _allObjects[i];
-                var data = _registry.Datas[i];
+                var data = datas[i];
 
                 caseView.gameObject.SetActive(true);
                 caseView.Setup(data);
             }
-            for(int i = _registry.Datas.Count; i < _allObjects.Count;i++)
+            for(int i = datas.Length; i < _allObjects.Count;i++)
             {
                 var caseView = _allObjects[i];
 

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Data.Case
+namespace Game.Data.Case.Visual
 {
     [CreateAssetMenu(fileName = "CasesVisualDataRegistry", menuName = "Cases/CasesVisualDataRegistry")]
-    public class CasesVisualDataRegistry : ScriptableObject
+    public class CasesVDRegistrySO : ScriptableObject
     {
         [field: SerializeField]
-        public List<CaseVisualData> Datas { get; private set; }
+        public List<CaseVD> Datas { get; private set; }
     }
 }
